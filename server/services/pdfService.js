@@ -1,9 +1,13 @@
-import pdfParse from "pdf-parse";
+import pdf from "pdf-parse-new";
+import axios from "axios";
 
-const extractText = async (buffer) => {
-  const data = await pdfParse(buffer);
+export const extractTextFromPdfUrl = async (pdfUrl) => {
+  const response = await axios.get(pdfUrl, {
+    responseType: "arraybuffer",
+  });
+
+  const buffer = Buffer.from(response.data);
+  const data = await pdf(buffer);
 
   return data.text;
 };
-
-export default extractText;

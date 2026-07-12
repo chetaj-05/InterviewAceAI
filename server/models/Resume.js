@@ -27,13 +27,13 @@ const resumeSchema = new mongoose.Schema(
 
     analysis: {
       atsScore: Number,
-
-      strengths: [String],
-
-      weaknesses: [String],
-
+      overallScore: Number,
+      experienceLevel: String,
+      targetRole: String,
+      skills: [String],
       missingSkills: [String],
-
+      strengths: [String],
+      weaknesses: [String],
       suggestions: [String],
     },
   },

@@ -6,6 +6,8 @@ import connectDB from "./configs/db.js";
 import dns from "dns";
 import authRoutes from "./routes/authRoutes.js";
 import resumeRoutes from "./routes/resumeRoutes.js";
+import interviewRoutes from "./routes/interviewRoutes.js";
+import dashboardRoutes from "./routes/dashboardRoutes.js";
 dns.setServers(["8.8.8.8", "8.8.4.4"]);
 
 connectDB();
@@ -16,7 +18,8 @@ app.use(cors());
 app.use(express.json());
 app.use("/api/auth", authRoutes);
 app.use("/api/resume", resumeRoutes);
-
+app.use("/api/interview", interviewRoutes);
+app.use("/api/dashboard", dashboardRoutes);
 app.get("/", (req, res) => {
   res.send("InterviewAce API Running...");
 });
