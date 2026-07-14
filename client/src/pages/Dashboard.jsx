@@ -12,19 +12,24 @@ import {
   CartesianGrid,
 } from "recharts";
 
-const StatCard = ({ title, value, icon, color }) => (
-  <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-sm border border-gray-100 dark:border-gray-700 hover:shadow-md transition-all">
-    <div className="flex items-center justify-between mb-4">
-      <p className="text-sm font-medium text-gray-500 dark:text-gray-400">
-        {title}
-      </p>
+const StatCard = ({ title, value, icon, color, subtext }) => (
+  <div className="bg-white dark:bg-[#13131f] rounded-2xl p-5 border border-gray-100 dark:border-white/5 hover:border-violet-200 dark:hover:border-violet-500/20 transition-all duration-300 group">
+    <div className="flex items-start justify-between mb-4">
       <div
         className={`w-10 h-10 rounded-xl flex items-center justify-center text-lg ${color}`}
       >
         {icon}
       </div>
+      <span className="text-xs text-gray-400 dark:text-gray-600 font-medium">
+        {subtext || "total"}
+      </span>
     </div>
-    <p className="text-3xl font-bold text-gray-900 dark:text-white">{value}</p>
+    <p className="text-2xl font-bold text-gray-900 dark:text-white mb-0.5">
+      {value}
+    </p>
+    <p className="text-xs text-gray-500 dark:text-gray-400 font-medium">
+      {title}
+    </p>
   </div>
 );
 
