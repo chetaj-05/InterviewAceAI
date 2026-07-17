@@ -160,6 +160,7 @@ export const analyzeResume = async (req, res) => {
       analysis: resume.analysis,
     });
   } catch (error) {
+    console.log(error);
     console.error("Analysis error:", error);
 
     // Mark as failed
