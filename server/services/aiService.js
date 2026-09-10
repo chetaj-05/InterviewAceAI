@@ -1,20 +1,28 @@
-import Groq from "groq-sdk";
+import { GoogleGenAI } from "@google/genai";
 
-const groq = new Groq({
-  apiKey: process.env.GROQ_API_KEY,
-});
+// Initialize Gemini SDK. It automatically picks up process.env.GEMINI_API_KEY
+const ai = new GoogleGenAI({});
 
+// The core function that all other exports will use
 const callAI = async (prompt) => {
-  const response = await groq.chat.completions.create({
-    model: "llama-3.3-70b-versatile",
-    messages: [{ role: "user", content: prompt }],
-    temperature: 0.7,
-    max_tokens: 2048,
-  });
+  try {
+    const response = await ai.models.generateContent({
+      model: "gemini-3.6-flash", // or "gemini-3.6-flash" if you prefer
+      contents: prompt,
+      config: {
+        // This forces Gemini to return strict JSON, meaning you don't
+        // have to manually string-replace markdown backticks anymore
+        responseMimeType: "application/json",
+        temperature: 0.7,
+      },
+    });
 
-  const text = response.choices[0].message.content;
-  const clean = text.replace(/```json|```/g, "").trim();
-  return JSON.parse(clean);
+    // Parse the clean JSON text directly
+    return JSON.parse(response.text);
+  } catch (error) {
+    console.error("Gemini API Error in callAI:", error);
+    throw error;
+  }
 };
 
 export const analyzeResumeWithGemini = async (resumeText) => {
