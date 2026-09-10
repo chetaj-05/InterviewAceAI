@@ -29,7 +29,7 @@ export const analyzeResumeWithGemini = async (resumeText) => {
   const prompt = `
 You are an expert ATS and career coach.
 Analyze this resume and return ONLY this JSON, no extra text:
-
+give honest.
 {
   "atsScore": <number 0-100>,
   "overallScore": <number 0-100>,
@@ -86,6 +86,7 @@ export const generateInterviewQuestions = async ({
 
   const prompt = `
 You are an expert technical interviewer.
+keep it easy question and give markings bit easy/medium.
 Generate exactly ${count} interview questions for:
 
 Role: ${role}
@@ -108,7 +109,7 @@ export const evaluateAnswer = async ({
 }) => {
   const prompt = `
 You are an expert interviewer evaluating a candidate answer.
-
+keep it easy question and give markings bit easy/medium.
 Role: ${role}
 Difficulty: ${difficulty}
 Question: ${question}
@@ -138,7 +139,7 @@ export const generateOverallFeedback = async ({
 
   const prompt = `
 You are an expert interviewer giving final feedback.
-
+keep it easy question and give markings bit easy/medium.
 Role: ${role}
 Overall Score: ${overallScore}/10
 
