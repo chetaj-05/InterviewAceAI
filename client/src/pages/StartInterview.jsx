@@ -16,6 +16,7 @@ const ROLES = [
   "Mobile Developer",
   "UI/UX Designer",
   "Product Manager",
+  "Software Devloper",
 ];
 
 const TECH_STACKS = [
@@ -31,6 +32,7 @@ const TECH_STACKS = [
   "Java, Spring Boot",
   "MERN Stack",
   "MEAN Stack",
+  "cpp",
 ];
 
 function StartInterview() {
